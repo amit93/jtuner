@@ -1,0 +1,22 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+#define DIMSIZE 2000
+
+int main() {
+  short **a;
+  
+  a = (short **) malloc(sizeof(short *) * DIMSIZE);
+  
+  int i, j;
+  for (i = 0; i < DIMSIZE; i++) 
+    a[i] = (short *) malloc(sizeof(short) * DIMSIZE);
+
+  for (i = 0; i < DIMSIZE; i++)
+    for (j = 0; j < DIMSIZE; j++) 
+      a[i][j] = 1;
+
+
+  return 0;
+
+}

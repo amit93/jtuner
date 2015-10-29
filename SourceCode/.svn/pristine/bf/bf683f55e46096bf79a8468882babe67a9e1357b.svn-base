@@ -1,0 +1,12 @@
+#!/bin/sh
+
+make
+../bin/pseat -p test -s direct test.conf
+
+if [ -s test.perf ]; then
+    echo " "
+    echo "Test PASSED"
+else
+    echo " "
+    echo "Test FAILED"
+fi

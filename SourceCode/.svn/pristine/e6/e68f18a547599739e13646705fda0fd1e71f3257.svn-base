@@ -1,0 +1,60 @@
+# Opteron, intel 9.1 
+#ifeq ($(MACHINE), x86_64)
+FC = gfortran
+FLAGS = -O2 
+OPTFLAGS = 
+# FC = /projects/pkgs/intel/fc/10.0.023/bin/ifort
+# FLAGS = -O3 #-ipo -r8 -132
+# OPTFLAGS = #-mP2OPT_hlo_fusion=F 
+# FC = /opt/pathscale/bin/pathf90
+# FLAGS = -O3 
+# OPTFLAGS = -LNO:fusion=0 
+#endif 
+
+# Itanium, intel 9.0
+ifeq ($(MACHINE), ia64)
+FC = ifort
+FLAGS = -O3 -tpp2 -ipo -r8 -mP2OPT_hlo_fusion=F -132
+OPTFLAGS = -mP2OPT_hlo_fusion=F
+endif
+
+# PowerPC, IBM 6.1
+ifeq ($(MACHINE), powerpc)
+CC = f77
+FLAGS = -O5 -qarch=g5 -qcache=auto -qhot -qipa=level=2 -qtune=g5 -qfixed=132
+OPTFLAGS =  
+endif
+
+# MIPS, MipsPro 
+ifeq ($(MACHINE), mips)
+FC = f77
+FLAGS = -extend_source -r12000 -O2 -OPT:Olimit=0 -TARG:platform=ip27
+OPTFLAGS = -LNO:fusion=0 
+endif
+
+# Pentium 
+#ifeq ($(MACHINE), i686) 
+
+# P4, rivendel, intel 7.0 
+#CC = g77
+#FLAGS = -O2 -ffixed-line-length-132
+# CC = /home/ccristi/local/intel/compiler70/ia32/bin/ifc
+# FLAGS = -O3 -132
+# OPTFLAGS = -mP2OPT_hlo_fusion=F
+#OPTFLAGS = -mP2OPT_hlo_fusion=F
+
+# P3, tagore, intel 8.1, GNU 3.2.2 
+# FC = ifort 
+# FLAGS = -O3 -132
+# OPTFLAGS = -mP2OPT_hlo_fusion=F
+# FC =  /opt1/gcc-3.3.3/redhat9/bin/g77
+# FLAGS = -O2 -ffixed-line-length-132
+# OPTFLAGS = 
+# endif
+
+# Alpha 
+ifeq ($(MACHINE), alpha)
+CC = f77
+FLAGS = -align dcommons -assume noaccuracy_sensitive -math_library fast -extend_source -arch ev67 -tune ev67
+OPTFLAGS = -O2
+endif

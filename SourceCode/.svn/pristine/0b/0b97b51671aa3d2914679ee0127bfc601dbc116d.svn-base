@@ -1,0 +1,13 @@
+ONLINE             # mode online vs. offline search 
+MAX                # mode search for minima vs. maxima 
+MFLOPS             # performance metric to use 
+5                  # max number of evaluations 
+3                  # number of search dimensions 
+
+N 1 60 2           # type range stride 
+E 2 0 16           # type number of values possible values 
+P 4                # type number of values in permutation
+
+
+
+

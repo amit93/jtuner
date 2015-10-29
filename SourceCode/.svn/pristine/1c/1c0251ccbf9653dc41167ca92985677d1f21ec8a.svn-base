@@ -1,0 +1,14 @@
+EXE = test
+OBJS = test.o
+CC = gcc
+
+all: $(EXE)
+
+$(EXE): $(OBJS) 
+	$(CC) -o $(EXE) $(LDFLAGS) $(OBJS)
+
+%.o: %.c
+	$(CC) -c $(FLAGS) $(OPTFLAGS) $< -o $@
+
+clean:
+	/bin/rm -f $(EXE) *.o
