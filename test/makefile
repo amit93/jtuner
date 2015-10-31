@@ -6,7 +6,8 @@ all: $(EXE)
 
 $(EXE):  
 #	$(JAVAC) $(EXE).java
-	get_primary.sh $(JAVA) $(TUNEFLAGS) -cp . $(EXE) > perf.pseat
+	get_primary.sh $(JAVA) $(TUNEFLAGS) -cp . $(EXE) > temp.pseat
+	awk '{print $NF;}' temp.pseat > perf.pseat
 #	get_primary.sh $(JAVA) $(EXE) > standperf.pseat
 
 #clean:
